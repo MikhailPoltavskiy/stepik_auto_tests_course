@@ -1,32 +1,51 @@
-from selenium import webdriver
-from selenium.webdriver.common.by import By
+import pytest
+
+@pytest.fixture()
+def browser():
+    pass
 
 
-def registration(link):
-    try:
-        browser = webdriver.Chrome()
-        browser.get(link)
-        browser.implicitly_wait(1)
-        first_name = browser.find_element(By.CSS_SELECTOR, ".first_block .first")
-        first_name.send_keys("Homer")
-        last_name = browser.find_element(By.CSS_SELECTOR, ".first_block .second")
-        last_name.send_keys("Simpson")
-        email = browser.find_element(By.CSS_SELECTOR, ".third_class .third")
-        email.send_keys("simpsons@mail.com")
-        button = browser.find_element(By.CSS_SELECTOR, "button.btn")
-        button.click()
-        welcome_text_elt = browser.find_element(By.TAG_NAME, "h1")
-        welcome_text = welcome_text_elt.text
-        return welcome_text
-    except:
-        browser.quit()
+class TestMainPage():
+    # номер 1
+    @pytest.mark.xfail
+    @pytest.mark.smoke
+    def test_guest_can_login(self, browser):
+        assert True
+
+    # номер 2
+    @pytest.mark.regression
+    def test_guest_can_add_book_from_catalog_to_basket(self, browser):
+        assert True
 
 
-def test_link1():
-    link = "http://suninjuly.github.io/registration1.html"
-    assert registration(link) == "Congratulations! You have successfully registered!", "Error"
+class TestBasket():
+    # номер 3
+    @pytest.mark.skip(reason="not implemented yet")
+    @pytest.mark.smoke
+    def test_guest_can_go_to_payment_page(self, browser):
+        assert True
+
+    # номер 4
+    @pytest.mark.smoke
+    def test_guest_can_see_total_price(self, browser):
+        assert True
 
 
-def test_link2():
-    link = "http://suninjuly.github.io/registration2.html"
-    assert registration(link) == "Congratulations! You have successfully registered!", "Error"
+@pytest.mark.skip
+class TestBookPage():
+    # номер 5
+    @pytest.mark.smoke
+    def test_guest_can_add_book_to_basket(self, browser):
+        assert True
+
+    # номер 6
+    @pytest.mark.regression
+    def test_guest_can_see_book_price(self, browser):
+        assert True
+
+
+# номер 7
+@pytest.mark.beta_users
+@pytest.mark.smoke
+def test_guest_can_open_gadget_catalogue(browser):
+    assert True

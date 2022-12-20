@@ -1,9 +1,16 @@
-full_str = 'some_text'
-substr = 'some'
-
-def test_substring(full_string, substring):
-    # ваша реализация, напишите assert и сообщение об ошибке
-    assert substring in full_string, f'expected {substring} to be substring of {full_string}'
+import pytest
 
 
-test_substring(full_str, substr)
+@pytest.mark.xfail(strict=True)
+def test_succeed():
+    assert True
+
+
+@pytest.mark.xfail
+def test_not_succeed():
+    assert False
+
+
+@pytest.mark.skip
+def test_skipped():
+    assert False

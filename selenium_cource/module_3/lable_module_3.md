@@ -145,10 +145,54 @@ PyTest, для детального отчёта запускается с па�
 + test_fixture_autouse.py
 
 
-**Маркировка**
+## Маркировка
+
+[оф дока](https://pytest.org/en/stable/how-to/skipping.html)
 
     @pytest.mark.mark_name
 
+Может быть сразу несколько маркировок
+
+    @pytest.mark.smoke
+    @pytest.mark.win10
+
+Пропустить тест
+
+    @pytest.mark.skip
+
+Падающий тест (знаем, что упадет)
+[оф дока](https://docs.pytest.org/en/latest/reference/reference.html#pytest.mark.xfail)
+
+    @pytest.mark.xfail
+
+Необходимо зарегистрировать маркировки, для этого в корне создаем pytest.ini 
+
+    [pytest]
+    markers =
+        smoke: marker for smoke tests
+        regression: marker for regression tests
+        win10
+
+**Примеры запуска:**
+
+    pytest -s -v -m smoke test_fixture8.py
+    pytest -s -v -m "not smoke" test_fixture8.py
+    pytest -s -v -m "smoke or regression" test_fixture8.py
+    pytest -s -v -m "smoke and win10" test_fixture81.py
+    
+
+    @pytest.mark.xfail(reason="fixing this bug right now")
+
+    pytest -rx -v test_fixture10a.py (-rx выводит сообщение из reason
+    pytest -rX -v test_fixture10b.py (X - подробная информация)
 
 **Примеры:**
-+
++ test_fixture8.py
++ test_fixture81.py
++ test_fixture9.py
++ test_fixture10.py
++ test_fixture10a.py
++ test_fixture10b.py
+
+## Параметризация
+
