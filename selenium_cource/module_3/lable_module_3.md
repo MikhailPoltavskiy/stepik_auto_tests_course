@@ -196,3 +196,48 @@ PyTest, для детального отчёта запускается с па�
 
 ## Параметризация
 
+conftest.py - в корне проекта и вынесем туда фикстуру с настройками браузера
+
+    import pytest
+    from selenium import webdriver
+    from selenium.webdriver.chrome.service import Service
+    
+    
+    @pytest.fixture(scope="function")
+    def browser():
+        print("\nstart browser for test..")
+        options = webdriver.ChromeOptions()
+        options.add_experimental_option("excludeSwitches", ["enable-logging"])
+        service = Service(executable_path="C:/chromedriver/chromedriver.exe")
+        browser = webdriver.Chrome(service=service, options=options)
+        yield browser
+        print("\nquit browser..")
+        browser.quit()
+
+
+фикстура с параметризацией @pytest.mark.parametrize()
+
+    import pytest
+    from selenium.webdriver.common.by import By
+    
+    
+    @pytest.mark.parametrize('language', ["ru", "en-gb"])
+    def test_guest_should_see_login_link(browser, language):
+        link = f"http://selenium1py.pythonanywhere.com/{language}/"
+        browser.get(link)
+        browser.find_element(By.CSS_SELECTOR, "#login_link")
+
+[оф дока](https://docs.pytest.org/en/latest/how-to/parametrize.html)
+
+Для класса (уже с self)
+
+    @pytest.mark.parametrize('language', ["ru", "en-gb"])
+    class TestLogin:
+        def test_guest_should_see_login_link(self, browser, language):
+            link = f"http://selenium1py.pythonanywhere.com/{language}/"
+            browser.get(link)
+            browser.find_element(By.CSS_SELECTOR, "#login_link")
+            # этот тест запустится 2 раза
+
+        def test_guest_should_see_navbar_element(self, browser, language):
+            # этот тест тоже запустится дважды

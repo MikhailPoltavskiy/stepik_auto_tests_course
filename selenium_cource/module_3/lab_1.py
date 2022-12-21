@@ -1,16 +1,6 @@
-import pytest
+import os
+from dotenv import load_dotenv
 
-
-@pytest.mark.xfail(strict=True)
-def test_succeed():
-    assert True
-
-
-@pytest.mark.xfail
-def test_not_succeed():
-    assert False
-
-
-@pytest.mark.skip
-def test_skipped():
-    assert False
+load_dotenv()
+print(os.getenv("LOGIN_STEPIK"))
+print(os.getenv("PASSWORD_STEPIK"))
