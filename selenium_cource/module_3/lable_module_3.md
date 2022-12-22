@@ -241,3 +241,77 @@ conftest.py - в корне проекта и вынесем туда фикст
 
         def test_guest_should_see_navbar_element(self, browser, language):
             # этот тест тоже запустится дважды
+
+## Драйверы для других браузеров
+
+**mozila**
+
+[Драйвер мозилы geckodriver](https://github.com/mozilla/geckodriver/releases)
+
+
+## Передача параметров в командной строке
+
+[оф дока](https://docs.pytest.org/en/latest/example/simple.html)
+
+Плагин перезапуска тестов **pytest-rerunfailures**
+
+    pytest -v --tb=line --reruns 1 --browser_name=chrome test_rerun.py
+
+Для сокращения выводимой служебной информации в консоле используем **--tb=line**
+
+[подробнее про --tb=line](https://docs.pytest.org/en/stable/how-to/usage.html#modifying-python-traceback-printing)
+
+Для PyTest большой набор плагинов
+
+[плагины для pytest](https://docs.pytest.org/en/latest/reference/plugin_list.html)
+
+
+
+**[Официальная дока по PyTest](https://docs.pytest.org/en/latest/contents.html)**
+
+
+
+## Полезные ссылки
+
+**GIT**
+
++ [https://learngitbranching.js.org/](https://learngitbranching.js.org/)
++ [https://git-scm.com/book/ru/v2/](https://git-scm.com/book/ru/v2/)
++ [https://hyperskill.org/learn/topic/257/](https://hyperskill.org/learn/topic/257/)
++ [https://stepik.org/course/4138/](https://stepik.org/course/4138/)
++ [http://www-cs-students.stanford.edu/~blynn/gitmagic/intl/ru/index.html](http://www-cs-students.stanford.edu/~blynn/gitmagic/intl/ru/index.html)
++ [https://habr.com/company/intel/blog/344962/](https://habr.com/company/intel/blog/344962/)
++ [https://githowto.com/ru](https://githowto.com/ru)
+
+
+**Тестирование веб-приложений**
+
++ [https://realpython.com/python-testing/](https://realpython.com/python-testing/)
++ [пирамида тестирования на практике](https://habr.com/ru/post/358950/)
++ [unittest docs](https://docs.python.org/3/library/unittest.html)
+
+
+**Тестирование с помощью PyTest**
+
++ [Статья](https://habr.com/ru/post/269759/)
++ [Введение](https://coderlessons.com/tutorials/python-technologies/uznaite-pytest/pytest-kratkoe-rukovodstvo)
++ [Оф дока](https://docs.pytest.org/en/latest/)
++ [Хорошие практики](https://docs.pytest.org/en/stable/explanation/goodpractices.html)
++ [Полезные флаги](https://gist.github.com/amatellanes/12136508b816469678c2)
+
+
+**Использование фикстур в PyTest**
+
++ [Фикстуры в PyTest](https://docs.pytest.org/en/stable/explanation/fixtures.html)
++ [setup and teardown](https://docs.pytest.org/en/stable/how-to/xunit_setup.html)
++ [примеры из яндекса](https://habr.com/ru/company/yandex/blog/242795/)
++ [skip and xfail](https://pytest.org/en/stable/how-to/skipping.html)
+
+
+**Параметризация, конфигурирование, плагины**
+
++ [оф дока](https://docs.pytest.org/en/stable/how-to/parametrize.html)
++ [command line](https://docs.pytest.org/en/stable/example/simple.html)
++ [plagins](https://docs.pytest.org/en/stable/how-to/plugins.html)
++ [plagins list](https://docs.pytest.org/en/latest/reference/plugin_list.html)
++ [invoke](https://docs.pytest.org/en/stable/how-to/usage.html#modifying-python-traceback-printing)
